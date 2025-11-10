@@ -126,7 +126,29 @@ sync-storage/
 
 ## Auto-start on Boot
 
-### macOS (launchd)
+### Simple Method (Recommended)
+
+Enable auto-start with a single command:
+
+```bash
+# Enable auto-start
+gfs watch autostart enable
+
+# Check status
+gfs watch autostart status
+
+# Disable auto-start
+gfs watch autostart disable
+```
+
+This works on both macOS and Linux, and automatically handles all platform-specific setup.
+
+### Advanced: Manual Setup
+
+<details>
+<summary>Click to expand manual setup instructions</summary>
+
+#### macOS (launchd)
 
 1. Copy the plist file to LaunchAgents:
 
@@ -156,7 +178,7 @@ launchctl start com.github-files-sync.watch
 launchctl unload ~/Library/LaunchAgents/com.github-files-sync.watch.plist
 ```
 
-### Linux (systemd)
+#### Linux (systemd)
 
 1. Copy the service file:
 
@@ -189,6 +211,8 @@ systemctl --user status github-files-sync-watch.service
 systemctl --user stop github-files-sync-watch.service
 systemctl --user disable github-files-sync-watch.service
 ```
+
+</details>
 
 ## License
 
