@@ -6,6 +6,8 @@ Simple file synchronization tool using GitHub as storage.
 
 - Sync scattered files across multiple machines
 - Use GitHub as central storage
+- **Auto-watch and auto-push** - Automatically push changes when files are saved
+- **Auto-start on boot** - Start watching on system startup (macOS/Linux)
 - Simple CLI interface
 - No symbolic links - direct file copy
 - Minimal dependencies (Node.js built-ins only)
@@ -129,7 +131,11 @@ sync-storage/
 1. Copy the plist file to LaunchAgents:
 
 ```bash
-cp __docs__/autostart/com.github-files-sync.watch.plist ~/Library/LaunchAgents/
+# If installed via npm
+cp /usr/local/lib/node_modules/github-files-sync/autostart/com.github-files-sync.watch.plist ~/Library/LaunchAgents/
+
+# Or use this to find the installed location
+cp "$(npm root -g)/github-files-sync/autostart/com.github-files-sync.watch.plist" ~/Library/LaunchAgents/
 ```
 
 2. Load the service:
@@ -156,7 +162,12 @@ launchctl unload ~/Library/LaunchAgents/com.github-files-sync.watch.plist
 
 ```bash
 mkdir -p ~/.config/systemd/user
-cp __docs__/autostart/github-files-sync-watch.service ~/.config/systemd/user/
+
+# If installed via npm
+cp /usr/local/lib/node_modules/github-files-sync/autostart/github-files-sync-watch.service ~/.config/systemd/user/
+
+# Or use this to find the installed location
+cp "$(npm root -g)/github-files-sync/autostart/github-files-sync-watch.service" ~/.config/systemd/user/
 ```
 
 2. Enable and start the service:

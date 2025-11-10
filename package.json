@@ -1,6 +1,6 @@
 {
   "name": "github-files-sync",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple file synchronization tool using GitHub as storage",
   "type": "module",
   "bin": {
@@ -33,6 +33,7 @@
   "files": [
     "bin/",
     "lib/",
+    "autostart/",
     "README.md",
     "LICENSE"
   ]
