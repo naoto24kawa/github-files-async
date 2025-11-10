@@ -1,0 +1,26 @@
+[Unit]
+Description=GitHub Files Sync - Auto Watch
+After=network.target
+
+[Service]
+Type=simple
+# gfs コマンドのパスを指定（npm link や npm install -g で設定されたパス）
+ExecStart=/usr/local/bin/gfs watch start
+
+# プロセスが終了した場合は自動的に再起動
+Restart=on-failure
+RestartSec=10
+
+# ユーザーとグループ（YOUR_USERNAMEを実際のユーザー名に置き換える）
+User=%i
+Group=%i
+
+# 環境変数
+Environment="PATH=/usr/local/bin:/usr/bin:/bin"
+
+# ログ出力
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

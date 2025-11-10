@@ -1,0 +1,24 @@
+# Development files
+.git/
+.gitignore
+.claude/
+__docs__/
+
+# IDE
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Testing
+test/
+*.test.js
+
+# Documentation (only README.md is included)
+GETTING_STARTED.md

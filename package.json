@@ -1,0 +1,39 @@
+{
+  "name": "github-files-sync",
+  "version": "1.0.0",
+  "description": "Simple file synchronization tool using GitHub as storage",
+  "type": "module",
+  "bin": {
+    "gfs": "./bin/cli.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "sync",
+    "files",
+    "github",
+    "dotfiles",
+    "backup",
+    "cli"
+  ],
+  "author": "naoto24kawa",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/naoto24kawa/github-files-sync.git"
+  },
+  "bugs": {
+    "url": "https://github.com/naoto24kawa/github-files-sync/issues"
+  },
+  "homepage": "https://github.com/naoto24kawa/github-files-sync#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "bin/",
+    "lib/",
+    "README.md",
+    "LICENSE"
+  ]
+}

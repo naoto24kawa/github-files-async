@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- サービス名 -->
+    <key>Label</key>
+    <string>com.github-files-sync.watch</string>
+
+    <!-- 実行するコマンド -->
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/local/bin/gfs</string>
+        <string>watch</string>
+        <string>start</string>
+    </array>
+
+    <!-- ログイン時に自動起動 -->
+    <key>RunAtLoad</key>
+    <true/>
+
+    <!-- プロセスが終了したら自動再起動 -->
+    <key>KeepAlive</key>
+    <false/>
+
+    <!-- 標準出力のログファイル -->
+    <key>StandardOutPath</key>
+    <string>/tmp/gfs-watch.log</string>
+
+    <!-- 標準エラー出力のログファイル -->
+    <key>StandardErrorPath</key>
+    <string>/tmp/gfs-watch.error.log</string>
+
+    <!-- 環境変数 -->
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    </dict>
+</dict>
+</plist>
