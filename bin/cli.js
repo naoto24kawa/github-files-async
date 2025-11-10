@@ -36,14 +36,15 @@ function showHelp() {
   \x1b[36mgfs\x1b[0m <command> [options]
 
 \x1b[1mCOMMANDS:\x1b[0m
-  \x1b[36minit\x1b[0m <github-repo-url>      Initialize sync with GitHub repository
-  \x1b[36madd\x1b[0m <file-path>             Add file to sync list
-  \x1b[36mpush\x1b[0m                        Push local files to GitHub
-  \x1b[36mpull\x1b[0m                        Pull files from GitHub to local
-  \x1b[36mstatus\x1b[0m                      Show sync status
-  \x1b[36mwatch\x1b[0m <start|stop|status>  Watch files and auto-push changes
-  \x1b[36moverride\x1b[0m <file-id> <path>   Override file path for this machine
-  \x1b[36mhelp\x1b[0m                        Show this help message
+  \x1b[36minit\x1b[0m <github-repo-url>            Initialize sync with GitHub repository
+  \x1b[36madd\x1b[0m <file-path>                   Add file to sync list
+  \x1b[36mpush\x1b[0m                              Push local files to GitHub
+  \x1b[36mpull\x1b[0m                              Pull files from GitHub to local
+  \x1b[36mstatus\x1b[0m                            Show sync status
+  \x1b[36mwatch\x1b[0m <start|stop|status>        Watch files and auto-push changes
+  \x1b[36mwatch autostart\x1b[0m <enable|disable>  Enable/disable auto-start on login
+  \x1b[36moverride\x1b[0m <file-id> <path>         Override file path for this machine
+  \x1b[36mhelp\x1b[0m                              Show this help message
 
 \x1b[1mEXAMPLES:\x1b[0m
   \x1b[2m# Initialize with your repository\x1b[0m
@@ -87,7 +88,7 @@ async function main() {
         await status();
         break;
       case 'watch':
-        await watchCommand(args[0]);
+        await watchCommand(args[0], args[1]);
         break;
       case 'override':
         await override(args[0], args[1]);

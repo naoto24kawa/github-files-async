@@ -46,7 +46,7 @@ lib/
     push.js             # GitHub へのプッシュ
     pull.js             # GitHub からのプル
     status.js           # 同期状態の確認
-    watch.js            # ファイル監視と自動プッシュ
+    watch.js            # ファイル監視、自動プッシュ、自動起動設定の管理
     override.js         # マシン固有のパス設定
   utils/
     config.js           # 設定ファイルの読み書き
@@ -155,11 +155,40 @@ tail -f ~/.sync-config/watch.log
 
 ## 自動起動の仕組み
 
-### macOS (launchd)
+### コマンドラインからの設定（推奨）
+
+`gfs watch autostart` コマンドを使用することで、簡単に自動起動を設定できます：
+
+```bash
+# 自動起動を有効化
+gfs watch autostart enable
+
+# 状態確認
+gfs watch autostart status
+
+# 自動起動を無効化
+gfs watch autostart disable
+```
+
+**実装の詳細 (lib/commands/watch.js:240-545):**
+- `watch` コマンド配下に `autostart` サブコマンドを統合
+- プラットフォーム検出（macOS/Linux）
+- 設定ファイルの自動コピー
+- システムサービスへの登録/解除を自動実行
+- プラットフォーム固有のコマンド（launchctl/systemctl）を抽象化
+
+**設計の利点:**
+- watch 関連の機能がすべて `gfs watch` 配下に集約
+- 階層的なコマンド構造で機能が分かりやすい
+- 手動での watch 操作（start/stop/status）と自動起動設定を同じコマンド体系で管理
+
+### 手動設定（古い方法）
+
+#### macOS (launchd)
 
 `autostart/com.github-files-sync.watch.plist` を `~/Library/LaunchAgents/` に配置することで、ログイン時に自動的に `gfs watch start` が実行されます。
 
-### Linux (systemd)
+#### Linux (systemd)
 
 `autostart/github-files-sync-watch.service` を `~/.config/systemd/user/` に配置し、`systemctl --user enable` することで同様の動作を実現します。
 
